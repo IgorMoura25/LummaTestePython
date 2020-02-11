@@ -16,7 +16,7 @@ def consultar():
 
     imageHtml = form.find_element_by_tag_name('img').screenshot_as_png
 
-    with open("images/screenshotTESTE.png", "wb") as file:
+    with open("img/screenshotTESTE.png", "wb") as file:
         file.write(imageHtml)
     
     #driver.close()
