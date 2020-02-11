@@ -2,22 +2,25 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-def Consultar():
+def consultar():
     #opts = Options()
     #opts.set_headless()
     #assert opts.headless
     #browser = Chrome(options=opts)
-    browser = Chrome()
-    browser.get('http://www2.rio.rj.gov.br/multas/index.asp')
+    driver = Chrome()
+    driver.get('http://www2.rio.rj.gov.br/multas/index.asp')
 
-    search_form = browser.find_element_by_name('RBwSyEvVoIvg')
-    search_form.send_keys('TES0000')
-    search_form.submit()
+    form = driver.find_element_by_name('formulario')
+    inputHtml = form.find_element_by_xpath('//tbody[1]/tr[1]/td[2]/input')
+    inputHtml.send_keys("TES0000")
 
-    results = browser.find_elements_by_class_name('result')
-    print(results[0].text)
-    browser.close()
-    quit()
+    imageHtml = form.find_element_by_tag_name('img').screenshot_as_png
+
+    with open("images/screenshotTESTE.png", "wb") as file:
+        file.write(imageHtml)
+    
+    #driver.close()
+    #quit()
 
 if(__name__ == "__main__"):
-    Consultar()
+    consultar()
