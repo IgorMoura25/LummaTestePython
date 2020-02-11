@@ -1,0 +1,1 @@
+Adicionado arquivo para quando dev fizer um pull, criar a pasta. Porém, git está ignorando todos os arquivos .png
